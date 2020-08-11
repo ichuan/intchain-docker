@@ -9,6 +9,6 @@ RUN wget https://github.com/intfoundation/int/archive/V3.1.0.tar.gz -O - | tar -
 RUN cd /opt/coin && npm install
 
 # cleanup
-RUN apt apt autoremove -y && rm -rf /var/lib/apt/lists/*
+RUN apt remove -y python build-essential && apt autoremove -y && rm -rf /var/lib/apt/lists/*
 
 ENTRYPOINT ["node", "/opt/coin/src/tool/startDPeer.js", "--main", "--dataDir", "/opt/data", "--rpchost", "0.0.0.0"]
