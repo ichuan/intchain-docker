@@ -11,4 +11,5 @@ RUN cd /opt/coin && npm install
 # cleanup
 RUN apt remove -y python build-essential && apt autoremove -y && rm -rf /var/lib/apt/lists/*
 
-ENTRYPOINT ["node", "/opt/coin/src/tool/startDPeer.js", "--main", "--dataDir", "/opt/data", "--rpchost", "0.0.0.0"]
+WORKDIR /opt/coin
+ENTRYPOINT ["node", "src/tool/startDPeer.js", "--main", "--dataDir", "/opt/data", "--rpchost", "0.0.0.0"]
